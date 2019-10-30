@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "dsPsql": {
+    "host": "localhost",
+    "port": 5432,
+    "url": "",
+    "database": "loopback_auth_chat_psql",
+    "password": "111111",
+    "name": "dsPsql",
+    "user": "loopback_auth_chat_psql_user",
+    "connector": "postgresql"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "article",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "title"
+    },
+    "content": {
+      "type": "string",
+      "required": true,
+      "default": "content"
+    },
+    "author": {
+      "type": "string",
+      "default": "autor"
+    },
+    "user_id": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}

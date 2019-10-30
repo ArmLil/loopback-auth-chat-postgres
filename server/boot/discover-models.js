@@ -1,0 +1,28 @@
+// 'use strict';
+//
+// // run this to discover tables in db and create api
+//
+// module.exports = function(app, callback) {
+//   // Obtain the datasource registered with the name "db"
+//   const dataSource = app.dataSources.dsPsql;
+//
+//   // Step 1: define a model for "INVENTORY" table,
+//   // including any models for related tables (e.g. "PRODUCT").
+//
+//
+//
+//
+//   dataSource.discoverAndBuildModels(
+//     'EXAMPLE_TABLE',
+//     {relations: true},
+//     function(err, models) {
+//       if (err) return callback(err);
+//
+//       // Step 2: expose all new models via REST API
+//       for (const modelName in models) {
+//         app.model(models[modelName], {dataSource: dataSource});
+//       }
+//
+//       callback();
+//     });
+// };
