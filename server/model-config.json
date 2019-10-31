@@ -12,5 +12,9 @@
       "../common/mixins",
       "./mixins"
     ]
+  },
+  "worker": {
+    "dataSource": "dsPsql",
+    "public": true
   }
 }

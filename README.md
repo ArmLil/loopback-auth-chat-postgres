@@ -46,3 +46,11 @@ create models
 
 1. model worker
 extends buit-in bodel user for authentication
+
+$ lb model
+? Введите имя модели: worker
+? Выберите источник данных для подключения к нему worker: dsPsql (postgresql)
+? Выберите базовый класс модели User
+? Показать worker с помощью API REST? Yes
+? Пользовательская множественная форма (используется для создания URL REST):
+? Общая модель или только сервер? common
