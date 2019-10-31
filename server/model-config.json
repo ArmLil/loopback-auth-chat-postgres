@@ -16,5 +16,9 @@
   "worker": {
     "dataSource": "dsPsql",
     "public": true
+  },
+  "article": {
+    "dataSource": "dsPsql",
+    "public": true
   }
 }
