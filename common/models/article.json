@@ -17,9 +17,6 @@
     "author": {
       "type": "string",
       "default": "auther is not defined"
-    },
-    "worker_id": {
-      "type": "number"
     }
   },
   "validations": [],
