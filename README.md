@@ -16,7 +16,7 @@
             $ sudo -u postgres psql
             postgres=# create database loopback_auth_chat_postgres;
             postgres=# create user loopback_auth_chat_postgres_user with encrypted password '111111';
-            postgres=# grant all priviliges on database loopback_auth_chat_postgres to loopback_auth_chat_postgres_user;
+            postgres=# grant all privileges on database loopback_auth_chat_postgres to loopback_auth_chat_postgres_user;
 
 
           2.connect the datasource
@@ -114,3 +114,8 @@
         ? Требуется промежуточная модель? No
         ? Разрешить вложение связей в API REST: Yes
         ? Отключить связь от следующих подключенных объектов: No
+
+ #### create tables in db
+
+      $ cd bin
+      $ node remote-models-automigrate.js
