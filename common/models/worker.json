@@ -14,16 +14,6 @@
       "foreignKey": "worker_id",
       "options": {
         "nestRemoting": true
-      },
-      "foreignKeys": {
-        "worker_id": {
-          "name": "worker_id",
-          "foreignKey": "worker_id",
-          "entityKey": "id",
-          "entity": "article",
-          "required": "true",
-          "cascade": true
-        }
       }
     }
   },
