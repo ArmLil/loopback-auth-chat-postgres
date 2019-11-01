@@ -1,6 +1,14 @@
 # The app is created by node.js/LoopBack, PostgreSQL
 
-  ### The steps to create and develop the app
+## Usfull links
+
+https://loopback.io/doc/en/lb3/index.html
+
+PostgreSQL connector tutorial https://loopback.io/doc/en/lb3/Connecting-to-PostgreSQL.html
+
+Database specific tutorials for PostgreSQLreSql with loopback https://github.com/strongloop/loopback-example-database/tree/postgresql
+
+### The steps to create and develop the app
  &NewLine;
  #### Create the initial app
 
@@ -10,46 +18,46 @@
      ? Какую версию LoopBack требуется использовать? 3.x (Active Long Term Support)
      ? Какой вид приложения требуется создать? empty-server (Пустой API LoopBack без настроенных моделей и источников данных)
 
- #### Setup datasource
+ #### setup datasource
 
-          1.install postgres if do not have then follow the steps bellow
-            $ sudo -u postgres psql
-            postgres=# create database loopback_auth_chat_postgres;
-            postgres=# create user loopback_auth_chat_postgres_user with encrypted password '111111';
-            postgres=# grant all privileges on database loopback_auth_chat_postgres to loopback_auth_chat_postgres_user;
-
-
-          2.connect the datasource
-            $ cd loopback_auth_chat_postgres
-            $ npm install loopback-connector-postgresql --save
-            $ lb datasource
-            ? Введите имя источника данных: dsPsql
-            ? Выберите коннектор для dsPsql: PostgreSQL (поддерживается StrongLoop)
-            ? Connection String url to override other settings (eg: postgres://username:password@localhost/database):
-            ? host: localhost
-            ? port: 5432
-            ? user: loopback_auth_chat_postgres_user
-            ? password: [hidden]
-            ? database: loopback_auth_chat_postgres
+      1.install postgres if do not have then follow the steps bellow
+        $ sudo -u postgres psql
+        postgres=# create database loopback_auth_chat_postgres;
+        postgres=# create user loopback_auth_chat_postgres_user with encrypted password '111111';
+        postgres=# grant all privileges on database loopback_auth_chat_postgres to loopback_auth_chat_postgres_user;
 
 
-        the result datasources.json looks
-
-          {
-            "dsPsql": {
-              "host": "localhost",
-              "port": 5432,
-              "url": "",
-              "database": "loopback_auth_chat_postgres",
-              "password": "111111",
-              "name": "dsPsql",
-              "user": "loopback_auth_chat_postgres_user",
-              "connector": "postgresql"
-            }
-          }
+      2.connect the datasource
+        $ cd loopback_auth_chat_postgres
+        $ npm install loopback-connector-postgresql --save
+        $ lb datasource
+        ? Введите имя источника данных: dsPsql
+        ? Выберите коннектор для dsPsql: PostgreSQL (поддерживается StrongLoop)
+        ? Connection String url to override other settings (eg: postgres://username:password@localhost/database):
+        ? host: localhost
+        ? port: 5432
+        ? user: loopback_auth_chat_postgres_user
+        ? password: [hidden]
+        ? database: loopback_auth_chat_postgres
 
 
-#### create models
+    the result datasources.json looks
+
+      {
+        "dsPsql": {
+          "host": "localhost",
+          "port": 5432,
+          "url": "",
+          "database": "loopback_auth_chat_postgres",
+          "password": "111111",
+          "name": "dsPsql",
+          "user": "loopback_auth_chat_postgres_user",
+          "connector": "postgresql"
+        }
+      }
+
+
+ #### create models
 
     1. worker (extends buit-in bodel user for authentication)
       $ lb model
@@ -99,16 +107,16 @@
 
   #### add relations
 
-        $ lb relation
-        ? Выберите модель для создания из нее взаимосвязи: worker
-        ? Тип связи: has many
-        ? Выберите модель для создания взаимосвязи с ней: article
-        ? Введите имя свойства для связи: (articles) loopback-datasource-juggler deprecated Метод Scope "getAsync()" устарел, используйте вместо него "find()". ../../../.nvm/versions/node/v12.13.0/lib/node_modules/loopback-cli/node_modules/generator-loopback/lib/helpers.js:132:37
-        ? Введите имя свойства для связи: articles
-        ? (Необязательно) введите пользовательский внешний ключ: worker_id
-        ? Требуется промежуточная модель? No
-        ? Разрешить вложение связей в API REST: Yes
-        ? Отключить связь от следующих подключенных объектов: No
+      $ lb relation
+      ? Выберите модель для создания из нее взаимосвязи: worker
+      ? Тип связи: has many
+      ? Выберите модель для создания взаимосвязи с ней: article
+      ? Введите имя свойства для связи: (articles) loopback-datasource-juggler deprecated Метод Scope "getAsync()" устарел, используйте вместо него "find()". ../../../.nvm/versions/node/v12.13.0/lib/node_modules/loopback-cli/node_modules/generator-loopback/lib/helpers.js:132:37
+      ? Введите имя свойства для связи: articles
+      ? (Необязательно) введите пользовательский внешний ключ: worker_id
+      ? Требуется промежуточная модель? No
+      ? Разрешить вложение связей в API REST: Yes
+      ? Отключить связь от следующих подключенных объектов: No
 
  #### create tables in db
 
@@ -121,3 +129,17 @@
     $ cd bin
     $ node autoupdate-models.js
     If there are existing tables in a database, running automigrate() will drop and re-create the tables: Therefore, data will be lost. To avoid this problem, use autoupdate(). Instead of dropping tables and recreating them, autoupdate() calculates the difference between the LoopBack model and the database table definition and alters the table accordingly
+
+    There is an issue for foreignKey setup with automigration, in db it is not supported for postgreSql
+    https://github.com/strongloop/loopback-connector-postgresql/issues/348
+
+    we can manually add foreignKey with this sql query
+
+    ALTER TABLE article
+    ADD CONSTRAINT fkey_article_in_worker FOREIGN KEY (worker_id)
+        REFERENCES worker (id)
+        ON UPDATE CASCADE ON DELETE CASCADE;
+
+    or run native-queries.js
+    $ cd bin
+    $ node native-queries.js
