@@ -6,7 +6,11 @@ var path = require('path');
 var app = require(path.resolve(__dirname, '../server/server'));
 var ds = app.datasources.dsPsql;
 
-ds.autoupdate();
+ds.autoupdate(null, function(err) {
+  if (err) throw err;
+  console.log('Finished autoupdate');
+  ds.disconnect();
+});
 
 // // this part is from documentation
 // ds.createModel(schema_v2.name, schema_v2.properties, schema_v2.options);

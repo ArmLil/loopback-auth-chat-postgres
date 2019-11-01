@@ -113,11 +113,11 @@
  #### create tables in db
 
       $ cd bin
-      $ node remote-models-automigrate.js
+      $ node automigrate-models.js
       this will drop and re-create the tables if they were created previously
 
  #### update tables in db
 
     $ cd bin
-    $ node autoupdate.js
+    $ node autoupdate-models.js
     If there are existing tables in a database, running automigrate() will drop and re-create the tables: Therefore, data will be lost. To avoid this problem, use autoupdate(). Instead of dropping tables and recreating them, autoupdate() calculates the difference between the LoopBack model and the database table definition and alters the table accordingly

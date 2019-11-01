@@ -7,4 +7,8 @@ var ds = app.datasources.dsPsql;
 
 
 // to create empty models in db
-ds.automigrate();
+ds.automigrate(null, function(err) {
+  if (err) throw err;
+  console.log('Finished migration');
+  ds.disconnect();
+});
