@@ -1,12 +1,12 @@
 # The app is created by node.js/LoopBack, PostgreSQL
 
-## Usfull links
+## Useful links
 
 https://loopback.io/doc/en/lb3/index.html
 
 PostgreSQL connector tutorial https://loopback.io/doc/en/lb3/Connecting-to-PostgreSQL.html
 
-Database specific tutorials for PostgreSQLreSql with loopback https://github.com/strongloop/loopback-example-database/tree/postgresql
+Database specific tutorials for PostgreSQL with loopback https://github.com/strongloop/loopback-example-database/tree/postgresql
 
 ### The steps to create and develop the app
  &NewLine;
