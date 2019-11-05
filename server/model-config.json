@@ -20,5 +20,28 @@
   "article": {
     "dataSource": "dsPsql",
     "public": true
+  },
+  "User": {
+    "dataSource": "dsPsql",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "dsPsql",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "dsPsql",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "dsPsql",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "dsPsql",
+    "public": false
   }
 }
