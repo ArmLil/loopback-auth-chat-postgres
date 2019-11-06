@@ -143,3 +143,23 @@ Database specific tutorials for PostgreSQL with loopback https://github.com/stro
     or run native-queries.js
     $ cd bin
     $ node native-queries.js
+
+ #### login example
+
+    {
+      "username": "username3",
+      "email": "email3@mail.ru",
+      "password": "password"
+    }
+
+    response body
+
+    {
+      "id": "HWiRJgbN8HzNwmF1I9eOyvznlftfQxjqVla1XkI9d8fD9lZz0ED2sNCNz4lH4dkc",
+      "ttl": 1209600,
+      "created": "2019-11-06T08:41:14.258Z",
+      "userId": 3
+    }
+
+
+    "HWiRJgbN8HzNwmF1I9eOyvznlftfQxjqVla1XkI9d8fD9lZz0ED2sNCNz4lH4dkc" is accessToken
