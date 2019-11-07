@@ -163,3 +163,43 @@ Database specific tutorials for PostgreSQL with loopback https://github.com/stro
 
 
     "HWiRJgbN8HzNwmF1I9eOyvznlftfQxjqVla1XkI9d8fD9lZz0ED2sNCNz4lH4dkc" is accessToken
+
+ #### query examples
+
+    to include related model (workers in get articles)
+
+    /api/articles?filter={"include":"worker"}&access_token=GtFOoSSeU2USH2ve8FRF887IzMy4qINaF87zzvjxHcVk2iuYRiM9IRa5MCXv24w3
+
+    response example
+
+
+    [
+      {
+        "title": "title3",
+        "content": "the content is empty",
+        "author": "auther is not defined",
+        "worker_id": 3,
+        "id": 3,
+        "worker": {
+          "realm": null,
+          "username": "username3",
+          "email": "email3@mail.ru",
+          "emailVerified": null,
+          "id": 3
+        }
+      },
+      {
+        "title": "title4",
+        "content": "the content is empty",
+        "author": "auther is not defined",
+        "worker_id": 3,
+        "id": 6,
+        "worker": {
+          "realm": null,
+          "username": "username3",
+          "email": "email3@mail.ru",
+          "emailVerified": null,
+          "id": 3
+        }
+      }
+    ]
